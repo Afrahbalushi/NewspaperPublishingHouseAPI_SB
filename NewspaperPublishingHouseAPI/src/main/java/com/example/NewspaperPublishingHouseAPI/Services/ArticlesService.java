@@ -14,12 +14,13 @@ public class ArticlesService {
     ArticlesRepository articlesRepository;
 
 
-    public void articlesRecord(String title, String content, String author, Date publishDate){
+    public void articlesRecord(String title, String content, String author, Date publishDate, Boolean isActive){
         Articles article = new Articles();
         article.setTitle(title);
         article.setContent(content);
         article.setAuthor(author);
         article.setPublishDate(publishDate);
+        article.setIsActive(isActive);
         articlesRepository.save(article);
     }
 
@@ -34,12 +35,13 @@ public class ArticlesService {
     }
 
 
-    public String updateArticle(Integer id, String title, String content, String author, Date publishDate){
+    public String updateArticle(Integer id, String title, String content, String author, Date publishDate, Boolean isActive){
        Articles articles = articlesRepository.getArticlesById(id);
        articles.setTitle(title);
        articles.setContent(content);
        articles.setAuthor(author);
        articles.setPublishDate(publishDate);
+       articles.setIsActive(isActive);
        articlesRepository.save(articles);
        return "The article has been updated !";
     }

@@ -4,12 +4,15 @@ import com.example.NewspaperPublishingHouseAPI.Models.Articles;
 import com.example.NewspaperPublishingHouseAPI.Services.ArticlesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+@Component
 @RestController
 @RequestMapping(value = "/articles")
 public class ArticlesController {
@@ -18,9 +21,9 @@ public class ArticlesController {
     ArticlesService articlesService;
 
     @PostMapping(value = "/createRecord")
-    public String articlesRecord(@RequestParam String title, String content, String author, Date publishDate) {
+    public String articlesRecord(@RequestParam String title, String content, String author, Date publishDate, Boolean isActive) {
         try{
-            articlesService.articlesRecord(title,content,author,publishDate);
+            articlesService.articlesRecord(title,content,author,publishDate,isActive);
         }catch (Exception e){
             return "Fail to create!";
         }
@@ -42,8 +45,8 @@ public class ArticlesController {
 
 
     @PutMapping(value = "update")
-    public ResponseEntity<String> updateArticle(@RequestParam Integer id, String title, String content, String author, Date publishDate){
-        String MSG = articlesService.updateArticle(id,title,content,author,publishDate);
+    public ResponseEntity<String> updateArticle(@RequestParam Integer id, String title, String content, String author, Date publishDate, Boolean isActive){
+        String MSG = articlesService.updateArticle(id,title,content,author,publishDate,isActive);
         return ResponseEntity.ok().body(MSG);
     }
 
@@ -53,5 +56,8 @@ public class ArticlesController {
         articlesService.deleteArticle(id);
         return "Record Deleted Successfully!";
     }
+
+
+
 
 }

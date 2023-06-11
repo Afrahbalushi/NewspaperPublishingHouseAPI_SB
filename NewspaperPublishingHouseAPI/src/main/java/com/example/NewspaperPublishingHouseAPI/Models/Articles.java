@@ -23,5 +23,6 @@ public class Articles {
     String content;
     String author;
     Date publishDate;
+    Boolean isActive;
 
 }
