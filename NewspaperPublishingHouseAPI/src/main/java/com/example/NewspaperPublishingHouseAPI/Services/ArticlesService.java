@@ -33,4 +33,15 @@ public class ArticlesService {
         return articlesRepository.getAllArticles();
     }
 
+
+    public String updateArticle(Integer id, String title, String content, String author, Date publishDate){
+       Articles articles = articlesRepository.getArticlesById(id);
+       articles.setTitle(title);
+       articles.setContent(content);
+       articles.setAuthor(author);
+       articles.setPublishDate(publishDate);
+       articlesRepository.save(articles);
+       return "The article has been updated !";
+    }
+
 }
