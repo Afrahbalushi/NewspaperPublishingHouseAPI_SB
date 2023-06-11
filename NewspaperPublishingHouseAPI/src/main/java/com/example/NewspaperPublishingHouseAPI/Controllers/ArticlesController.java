@@ -4,6 +4,7 @@ import com.example.NewspaperPublishingHouseAPI.Models.Articles;
 import com.example.NewspaperPublishingHouseAPI.Services.ArticlesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -55,6 +56,10 @@ public class ArticlesController {
     }
 
 
-
+    @GetMapping(value = "/user")
+    @PreAuthorize("hasRole('USER')")
+    public String user(){
+        return "you are registered user!!";
+    }
 
 }
