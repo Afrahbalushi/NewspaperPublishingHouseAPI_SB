@@ -15,7 +15,7 @@ import java.util.Date;
 public class Articles {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)        
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
     String title;
     String content;
