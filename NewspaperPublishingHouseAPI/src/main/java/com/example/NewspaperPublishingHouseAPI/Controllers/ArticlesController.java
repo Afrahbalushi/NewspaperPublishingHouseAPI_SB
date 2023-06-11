@@ -48,5 +48,10 @@ public class ArticlesController {
     }
 
 
+    @DeleteMapping(value = "/delete")
+    public String deleteArticle(@RequestParam Integer id){
+        articlesService.deleteArticle(id);
+        return "Record Deleted Successfully!";
+    }
 
 }

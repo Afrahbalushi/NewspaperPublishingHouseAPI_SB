@@ -44,4 +44,8 @@ public class ArticlesService {
        return "The article has been updated !";
     }
 
+    public void deleteArticle(Integer id){
+        articlesRepository.deleteById(id);
+    }
+
 }
