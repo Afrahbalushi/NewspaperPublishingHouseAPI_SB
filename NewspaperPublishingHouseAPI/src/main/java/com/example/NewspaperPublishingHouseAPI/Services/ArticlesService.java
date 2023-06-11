@@ -19,7 +19,7 @@ public class ArticlesService {
         article.setTitle(title);
         article.setContent(content);
         article.setAuthor(author);
-        article.setPublishDate(new Date());
+        article.setPublishDate(publishDate);
         articlesRepository.save(article);
     }
 
