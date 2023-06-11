@@ -3,6 +3,7 @@ package com.example.NewspaperPublishingHouseAPI.Controllers;
 import com.example.NewspaperPublishingHouseAPI.Models.Articles;
 import com.example.NewspaperPublishingHouseAPI.Services.ArticlesService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -40,6 +41,11 @@ public class ArticlesController {
     }
 
 
+    @PutMapping(value = "update")
+    public ResponseEntity<String> updateArticle(@RequestParam Integer id, String title, String content, String author, Date publishDate){
+        String MSG = articlesService.updateArticle(id,title,content,author,publishDate);
+        return ResponseEntity.ok().body(MSG);
+    }
 
 
 
