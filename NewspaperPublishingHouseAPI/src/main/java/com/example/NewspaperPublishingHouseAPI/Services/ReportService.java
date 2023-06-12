@@ -20,11 +20,15 @@ public class ReportService {
     ArticlesRepository articlesRepository;
 
     @Autowired
+    ArticlesService articlesService;
+
+    @Autowired
     public static final String path="C:\\Users\\AfrahAlBalushi\\Downloads\\NewspaperPublishingHouseAPI\\NewspaperPublishingHouseAPI";
 
     public String generateReport() throws FileNotFoundException, JRException{
 
         List<Articles> articles = articlesRepository.getAllArticles();
+
         File file = new File("C:\\Users\\AfrahAlBalushi\\Downloads\\NewspaperPublishingHouseAPI\\NewspaperPublishingHouseAPI\\src\\main\\resources\\Report.jrxml");
         JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
         JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(articles);
@@ -34,6 +38,7 @@ public class ReportService {
         JasperExportManager.exportReportToPdfFile(jasperPrint, path + "\\ArticleReport.pdf");
         return "Report Generated!!";
     }
+
 
 
 }
