@@ -19,8 +19,6 @@ public class ReportService {
     @Autowired
     ArticlesRepository articlesRepository;
 
-    @Autowired
-    ArticlesService articlesService;
 
     @Autowired
     public static final String path="C:\\Users\\AfrahAlBalushi\\Downloads\\NewspaperPublishingHouseAPI\\NewspaperPublishingHouseAPI";
